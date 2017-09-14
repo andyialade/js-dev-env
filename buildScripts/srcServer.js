@@ -1,10 +1,28 @@
-var express = require("express");
-var path = require("path");
-var open = require("open");
+// var express = require("express");
+// var path = require("path");
+// var open = require("open");
 
-var port = 3000;
-var app = express();
+// var port = 3000;
+// var app = express();
 
+/*eslint-disable no-console*/
+
+import express  from "express";
+import path from "path";
+import open from "open";
+import webpack from "webpack";
+import config from "../webpack.config.dev";
+
+const port = 3000;
+const app = express();
+const compiler = webpack(config);
+
+
+//Configuring Webpack
+app.use(require("webpack-dev-middleware")(compiler,{
+ noInfo:true,
+ publicPath: config.output.publicPath
+}));
 
 // App Routing
 app.get("/", function(req, res)
