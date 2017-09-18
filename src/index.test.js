@@ -8,12 +8,23 @@ describe("Our first test", ()=>{
     });
 });
 
+// describe("index.html", ()=>{
+//     it("should say Heading", ()=>{
+//         const index = fs.readFileSync("./src/index.html","utf-8");
+//         jsdom.env(index,function(err,window){
+//             const h1 = window.document.getElementsByTagName("h1")[0];
+//             expect(h1.innerHTML).to.equal("This is a Heading");
+//             window.close();
+//         });
+//     });
+// });
+
 describe("index.html", ()=>{
-    it("should say Heading", ()=>{
+    it("should have h1 that says Users", ()=>{
         const index = fs.readFileSync("./src/index.html","utf-8");
         jsdom.env(index,function(err,window){
             const h1 = window.document.getElementsByTagName("h1")[0];
-            expect(h1.innerHTML).to.equal("This is a Heading");
+            expect(h1.innerHTML).to.equal("Users");
             window.close();
         });
     });
